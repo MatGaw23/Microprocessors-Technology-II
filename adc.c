@@ -17,8 +17,8 @@
  {
 	 SIM->SCGC6 |= SIM_SCGC6_ADC0_MASK; 
 	 SIM->SCGC5 |=SIM_SCGC5_PORTE_MASK|SIM_SCGC5_PORTB_MASK;
-	 PORTE->PCR[22] |= PORT_PCR_MUX(1); 
-	 PORTB->PCR[0] |= PORT_PCR_MUX(0); // ptc1 wejscie dla adc
+	 PORTE->PCR[22] |= PORT_PCR_MUX(1); 	
+	 PORTB->PCR[0] |= PORT_PCR_MUX(0); // PORTB0 ADC INPUT
 	 ADC0->CFG1 |= ADC_CFG1_ADICLK(1) | ADC_CFG1_ADIV(2) | ADC_CFG1_ADLSMP_MASK;// divide bus clock /2 = 12 MHz | divide clock 12/4=3MHz | long sample time
 	 ADC0->CFG2 |= ADC_CFG2_ADHSC_MASK | ADC_CFG2_ADLSTS(1);//High-Speed conversion sequence selected with 2 additional ADCK cycles to total conversion
 																													// 12 extra ADCK cycles;16 ADCK cycles total sample time
@@ -58,7 +58,7 @@
 	res=(2.86/voltage - 1)*100;// calculate a resistance , formula from TGS 8100 datasheet
 	uarttransmit(res*10);// send resistance value via UART
 	WhichPixel(res,600,&x_position);// display resistance on modLCD1
-	 //RESET SCREEN ON LAST PIXEL
+	 /*RESET SCREEN ON LAST PIXEL*/
 	if(x_position==X_SIZE)
 	{
 		clear();

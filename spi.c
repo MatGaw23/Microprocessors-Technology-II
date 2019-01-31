@@ -34,7 +34,7 @@
 	 
  }
   /*----------------------------------------------------------------------------
-  Function that send a N byte frame 8 bit data each
+  Function that send a 1 byte frame of 8 bit data 
  *----------------------------------------------------------------------------*/
  void spiWrite1(uint8_t dataWrite)
  {
@@ -52,7 +52,7 @@
 	 PTE->PSOR |= (1<<16); //SS set to high;
  }
  /*----------------------------------------------------------------------------
-  Function that send a N byte frame 8 bit data each
+  Function that send a N byte frame of 8 bit data each
  *----------------------------------------------------------------------------*/
  void spiWrite(uint8_t dataWrite[],uint8_t N)
  {
@@ -96,6 +96,4 @@ uint8_t spiRead(uint8_t adress)
 		PTE->PSOR |= (1<<16); //SS set to high;
 	 	return SPI0->DL;
 	 
-	  
-
  }	 

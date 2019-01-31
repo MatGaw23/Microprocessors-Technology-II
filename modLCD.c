@@ -34,11 +34,12 @@ void modLCDInitialize(void)
 	sendComand(FUNCTION_SET_MASK);//basicmode 0x20
 	sendComand(DISPLAY_CONTROL_MASK | D_MASK); // normalmode
 	clear();
-	/*Preparation */ 
+	/*Preparations */ 
 	print_CoordinateSystem();
 	sendComand(X_MASK|2);
 	
 }
+
 /*----------------------------------------------------------------------------
   Function to send Command to modLCD
  *----------------------------------------------------------------------------*/
@@ -47,6 +48,7 @@ void sendComand(uint8_t data)
 	PTE->PCOR |= DC_MASK;
 	spiWrite1(data);
 }
+
 /*----------------------------------------------------------------------------
   Function to write in DRAM memory
  *----------------------------------------------------------------------------*/
@@ -55,6 +57,7 @@ void sendData(uint8_t data)
 	PTE->PSOR |= DC_MASK;
 	spiWrite1(data);
 }
+
 /*----------------------------------------------------------------------------
   Function that clears screen
  *----------------------------------------------------------------------------*/
@@ -66,6 +69,7 @@ void clear()
 		sendData(0x00);
 	}
 }
+
 /*----------------------------------------------------------------------------
   Function that print coordinate system on modLCD 
  *----------------------------------------------------------------------------*/
@@ -258,7 +262,9 @@ void print_character(char x)
 	}
 	sendData(0x00); // space between characters
 }
-
+/*----------------------------------------------------------------------------
+  Function that print string,starting in X,Y position
+*----------------------------------------------------------------------------*/
 void print_string(char*str,uint8_t X,uint8_t Y)
 {
 	move_XY(X,Y);

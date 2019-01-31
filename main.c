@@ -4,8 +4,9 @@
  *      Name:    main.c
  *      Purpose: Microprocessors Laboratory
  *---------------------------------------------------------------------------------------------------
- *      
- *       Author: Mateusz Gawron and Tomasz Cygan students at AGH University of Science and Technology
+ *      This project is made for Microprocessor Technology project purpose
+ *
+ *      Author: Mateusz Gawron and Tomasz Cygan students at AGH University of Science and Technology
  *---------------------------------------------------------------------------------------------------*/
 #include "MKL46Z4.h"
 #include "tpm.h"
@@ -16,7 +17,6 @@
 #include "uart.h"
 #include "spi.h"
 #include "modLCD.h"
-//#include "pmodRF2.h"
 /*----------------------------------------------------------------------------
       Application main procedure 
  *---------------------------------------------------------------------------*/
@@ -28,8 +28,6 @@ int main(void)
 	uartInitialize();
 	spiInitialize();
 	modLCDInitialize();
-	//pmodInitialize();
-	//char* s="Kocham SMPII!";
 	//print_string(s,4,2);
 
 	while(1)
